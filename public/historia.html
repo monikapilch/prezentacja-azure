@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monika Pilch - Obrazy</title>
+
+  <link rel="stylesheet" href="index.css">
+
+  <style>
+    .image-wrapper {
+      display: flex;
+      width: 80vw;
+      gap: 2rem;
+    }
+
+    #image-preview {
+      max-height: 70vh;
+    }
+
+    #image-description {
+      padding: 1rem;
+      border: 1px solid black;
+      border-radius: 4px;
+    }
+
+    .container {
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div id="selectors">
+    </div>
+
+    <h1 id="image-title"></h1>
+
+    <div class="image-wrapper">
+      <img id="image-preview" src="obrazy/2.png">
+      <div id="image-description"></div>
+    </div>
+
+    <div style="width: 100%">
+      <a href="index.html">Powrót</a>
+    </div>
+  </div>
+
+  <script defer>
+    const images = [
+      {
+        title: 'Kim był Zdzisław Beksiński',
+        path: 'obrazy/1.png',
+        description: `Jego malarstwo to surrealizm podany w formie monumentalnej, fantastycznej i budzącej często grozę u odbiorcy. Beksiński nie był pupilem socjalistycznej Polski. Jego osobowość, pochodzenie, a przede wszystkim wizje przedstawione w licznych dziełach nie pasowały do siermiężnej rzeczywistości.
+        Od pokoleń związany z rodzinnym Sanokiem (Muzeum Historyczne w tym mieście posiada największą kolekcję dzieł artysty), z przymusu pracował w upaństwowionej fabryce, którą założyli jego przodkowie. Był człowiekiem renesansu zajmującym się wieloma dziedzinami sztuki – fotografią, rzeźbą, malarstwem.
+        Choć zyskał międzynarodową sławę, pozostał człowiekiem skromnym i nieśmiałym. Nie lubił podróżować, nie cierpiał publicznych imprez i wystąpień. Wolał własną pracownię, w której pracował przy muzyce i spotkania z zaufanymi przyjaciółmi. Niestety, życie tego wielkiego artysty, aż do jego tragicznej śmierci, naznaczone było wieloma dramatami.
+        `
+      },
+      {
+        title: '2',
+        path: 'obrazy/2.png',
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus faucibus est, vitae ultrices ligula tincidunt non. Nulla ut scelerisque dolor. Ut tristique nulla sed elementum imperdiet. Vivamus dictum metus finibus lacus vehicula mattis. Phasellus a orci dui. In quis est rutrum, vulputate libero dignissim, lacinia diam. Donec luctus ligula leo. In scelerisque ut nunc et malesuada. Pellentesque tincidunt dictum erat, vel interdum sem tempor a. In convallis risus id felis posuere tincidunt. Donec sed nibh mauris.
+          Suspendisse congue porttitor tempus. In malesuada nec odio a porta. Nunc consectetur, elit sed dictum vehicula, felis sapien lobortis tortor, quis aliquet sem augue vitae purus. Vestibulum sem felis, molestie eu efficitur ac, molestie at tortor. Fusce quis orci dignissim sapien iaculis scelerisque. Donec vel vehicula urna. Donec vitae tortor ut massa pulvinar aliquet et id lacus. Mauris a ipsum tristique, ultrices massa vel, mollis erat. Vestibulum ut mollis augue. 
+        `
+      },
+      {
+        title: '3',
+        path: 'obrazy/3.png',
+        description: `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque faucibus faucibus est, vitae ultrices ligula tincidunt non. Nulla ut scelerisque dolor. Ut tristique nulla sed elementum imperdiet. Vivamus dictum metus finibus lacus vehicula mattis. Phasellus a orci dui. In quis est rutrum, vulputate libero dignissim, lacinia diam. Donec luctus ligula leo. In scelerisque ut nunc et malesuada. Pellentesque tincidunt dictum erat, vel interdum sem tempor a. In convallis risus id felis posuere tincidunt. Donec sed nibh mauris.
+          Suspendisse congue porttitor tempus. In malesuada nec odio a porta. Nunc consectetur, elit sed dictum vehicula, felis sapien lobortis tortor, quis aliquet sem augue vitae purus. Vestibulum sem felis, molestie eu efficitur ac, molestie at tortor. Fusce quis orci dignissim sapien iaculis scelerisque. Donec vel vehicula urna. Donec vitae tortor ut massa pulvinar aliquet et id lacus. Mauris a ipsum tristique, ultrices massa vel, mollis erat. Vestibulum ut mollis augue. 
+        `
+      }
+    ]
+
+    function setImage(imageIndex) {
+      const image = images[imageIndex]
+
+      const imageTitle = document.getElementById('image-title')
+      imageTitle.innerText = image.title
+
+      const imagePreview = document.getElementById('image-preview')
+      imagePreview.setAttribute('src', image.path)
+
+      const imageDescription = document.getElementById('image-description')
+      imageDescription.innerText = image.description
+    }
+
+    setImage(0)
+
+    const selectors = document.getElementById('selectors')
+    for (let imageIndex = 0; imageIndex < images.length; imageIndex++) {
+      const imagePath = images[imageIndex]
+      const selector = document.createElement('button');
+      selector.onclick = () => setImage(imageIndex)
+      selector.innerText = 'x'
+      selectors.appendChild(selector)
+    }
+  </script>
+</body>
+
+</html>
